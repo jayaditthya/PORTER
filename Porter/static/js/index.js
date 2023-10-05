@@ -25,6 +25,15 @@ document.querySelector('#close-login-form').onclick = () => {
     document.querySelector('.login-form').classList.remove('active');
 }
 
+document.querySelector('#register').onclick = () => {
+    document.querySelector('.login-form').classList.remove('active');
+    document.querySelector('.reg-form').classList.toggle('active');
+}
+
+document.querySelector('#close-reg-form').onclick = () => {
+    document.querySelector('.reg-form').classList.remove('active');
+}
+
 document.querySelector('#user-details').onclick = () => {
     document.querySelector('.dropdown').classList.toggle('active');
 }
