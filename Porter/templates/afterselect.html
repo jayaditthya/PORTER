@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Porter</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/Porter/static/css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
+</head>
+<style>
+    
+.address{
+    margin-top: 15rem;
+}
+.icons-container{
+    padding: 2rem; 
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+    gap: 1.5rem;
+    background: #fff;
+}
+.icons-container .icons{
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 2rem;
+    background: #fff;
+    box-shadow: var(--box-shadow);
+    border-radius: .5rem;
+}
+.icons-container .icons i{
+    height: 5rem;
+    width: 5rem;
+    line-height: 5rem;
+    font-size: 2.5rem;
+    border-radius: 50%;
+    background: #eee;
+    color: var(--black);
+    text-align: center;
+
+}
+
+
+.icons-container .icons:hover{
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 2rem;
+    background: #fff;
+    box-shadow: var(--box-shadow);
+    border-radius: .5rem;
+}
+.icons-container .icons:hover i{
+    height: 5rem;
+    width: 5rem;
+    line-height: 5rem;
+    font-size: 2.5rem;
+    border-radius: 50%;
+    background: #eee;
+    color: var(--black);
+    text-align: center;
+}
+.icons-container .icons:hover  .content h3{
+    color: var(--orange);
+}
+.icons-container .icons:hover  .content p{
+    color: var(--black);
+}
+.newaddress{
+    position: fixed;
+    top: -105%;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 1000;
+    background: rgba(255,255,255,.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+}
+
+.newaddress.active{
+    opacity: 1;
+    top: 0;
+    transition: all .5s ease;
+}
+
+.newaddress .add-content{
+    padding: 2rem;
+    margin: 2rem;
+    border-radius: .5rem;
+    box-shadow: var(--box-shadow);
+    background: #fff;
+    border: var(--border);
+    text-align: left;
+    width: 40rem; 
+}
+.add-content h3{
+    font-size: 2.5rem;
+    color: var(--orange);
+    text-transform: capitalize;   
+    padding-bottom: 1rem;
+}
+.add-content label{
+    font-size: 1.5rem;
+    color: var(--black);
+    text-transform: capitalize;   
+    padding-bottom: 1.5rem;
+    padding-left: 0.8rem;
+    font-weight: 600;
+
+}
+.add-content .box{
+    width: 100%;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: .5rem;
+    border: var(--border);
+    outline: none;
+    font-size: 1.5rem;
+    color: var(--black);
+    text-transform: capitalize;   
+}
+
+#close-otp{
+    position: absolute;
+    top: 1.5rem;
+    right: 2.5rem;
+    font-size: 5rem;
+    color: var(--orange);
+    cursor: pointer;
+}
+ .default{
+    color: var(--orange);
+    font-size: 1.7rem;
+    font-weight: 500;
+    left: 95%;
+    position: relative;
+    margin: 0 .5rem;
+}
+.contenta{
+    color: var(--orange);
+    font-size: 1.7rem;
+    font-weight: 500;
+    left: 80%;
+    position: relative;
+    margin: 0 .5rem;
+}
+.contenta a{
+    color: var(--orange);
+    font-size: 1.7rem;
+    font-weight: 500;
+    margin: 0 .5rem;
+}
+.content .newadd{
+    color: var(--orange);
+    font-size: 1.7rem;
+    font-weight: 500;
+    text-align: center;
+    left: 50%;
+    position: relative;
+    margin: 0 .5rem;
+    cursor: pointer;
+}
+#confirmchanges{
+    left: 50%;
+}
+
+.estimatedfare{
+    display: flex;
+    flex-direction: row;
+}
+.estimatedfare .icons-container{
+    display: flex;
+    gap: 1.5rem;
+    flex-direction: column;
+    height: 500px;
+    overflow-y: scroll;
+    background: #fff;
+}
+.icons-container .icons{
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 2rem;
+    background: #fff;
+    box-shadow: var(--box-shadow);
+    border-radius: .5rem;
+    width: 500px;
+    cursor: pointer
+}
+.icons-container .icons i{
+    height: 5rem;
+    width: 5rem;
+    line-height: 5rem;
+    font-size: 2.5rem;
+    border-radius: 50%;
+    background: #eee;
+    color: var(--black);
+    text-align: center;
+
+}
+
+.icons-container .icons .content h3{
+    color: var(--orange);
+    font-size: 2.5rem;
+}
+
+.icons-container .icons .content p{
+    color: var(--light-color);
+    font-size: 1.5rem;
+}
+
+.icons-container .icons:hover{
+    background: var(--black);
+    color: #fff;
+}
+.icons-container .icons:hover i{
+    background: var(--orange);
+    color: #fff;
+}
+.icons-container .icons:hover  .content h3{
+    color: #fff;
+}
+.icons-container .icons:hover  .content p{
+    color: #fff;
+}
+</style>
+<header class="header">
+    <div id="menu-btn" class="fas fa-bars"></div>
+
+    <a href="#" class="logo"><span>My</span>Porter</a>
+    <nav class="navbar">
+        <a href="/Porter/templates/index.html"><i class="fa-solid fa-house"></i>Home</a>
+        <a href="#vehicles"><i class="fa-solid fa-truck-fast"></i>Vehicles</a>
+        <a href="#review"><i class="fa-solid fa-newspaper"></i>Reviews</a>
+        <a href="#contact"><i class="fa-solid fa-phone-volume"></i>Contact</a>
+    </nav>
+    <div id="login-btn">
+        <button class="btn">Login</button>
+        <i class="far fa-user"></i>
+    </div>
+    <div id="user-details">
+        <div class="name">
+            <span>Welcome, John Doe</span>
+            <a>Account Details<i class="fa-solid fa-caret-down" id="down"></i></a>
+        </div>
+        <div class="triangle">
+            <i class="fa-solid fa-caret-down"></i>
+        </div>
+        <div class="dropdown">
+            <a href="/Porter/templates/profilechange.html"><i class="far fa-user"></i>Profile</a>
+            <a href="#"><i class="fa-solid fa-box"></i>Orders</a>
+            <a href="#"><i class="fa-regular fa-address-card"></i>Add Addresses</a>
+            <a href="#"><i class="fa-solid fa-right-from-bracket"></i>Logout</a>
+        </div> 
+    </div>
+</header>
+<body>
+    <div class="login-form">
+        <span class="fas fa-times" id="close-login-form"></span>
+        <form action="">
+            <h3>User Login</h3>
+            <input type="fname" placeholder="First Name" class="box">
+            <input type="email" placeholder="Email" class="box">
+            <input type="password" placeholder="Password" class="box">
+            <p>Forgot Your Passord ?<a href=""> Click here</a></p>
+            <input type="submit" value="Login Now" class="btn">
+            <p>Or Login with</p>
+            <div class="buttons">
+                <a href="#" class="btn">OTP</a>
+                <a href="#" class="btn">Google</a>
+            </div>
+            <p>Don't have an account ?<a href=""> Register here</a></p>
+        </form>
+    </div>
+    <section class="userinfo">
+
+
+    <section class="search" id="search">
+        <form action="">
+            <div class="location">
+            <i class="fa-solid fa-location-dot" style="color: #29d629;"></i><input type="text" placeholder="Enter Pickup Location" class="box">
+            <i class="fa-solid fa-location-crosshairs" id="currentloc"></i>
+            </div>
+            <div class="location">
+            <i class="fa-solid fa-location-dot" style="color: #f72009;"></i><input type="text" placeholder="Enter Drop Location" class="box">
+            <i class="fa-solid fa-location-crosshairs" id="currentloc"></i>
+            </div>
+        </form>
+    </section>
+    <section class="estimatedfare">
+        <div class="mapaddress">
+            <iframe class="mapadd" width="500" height="500" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.7228008879406!2d80.24602337496856!3d12.98957328732742!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a525d6202e54fb9%3A0xcf5fc0aac9108c7e!2sTIDEL%20Park%2C%20Rajiv%20Gandhi%20IT%20Expy%2C%20Tharamani%2C%20Chennai%2C%20Tamil%20Nadu%20600113!5e0!3m2!1sen!2sin!4v1696184866891!5m2!1sen!2sin" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+        <section class="icons-container">
+            <div class="icons">
+                <i class="fa-solid fa-truck-front"></i>
+                <div class="content">
+                    <h3>₹1000 - ₹2000</h3>
+                    <p>Tata Ace (3 Wheeler)</p>
+                    <p>500kg</p>
+                </div>
+            </div>            <div class="icons">
+                <i class="fa-solid fa-truck-front"></i>
+                <div class="content">
+                    <h3>₹1000 - ₹2000</h3>
+                    <p>Tata Ace (3 Wheeler)</p>
+                    <p>500kg</p>
+                </div>
+            </div>
+            <div class="icons">
+                <i class="fa-solid fa-truck-front"></i>
+                <div class="content">
+                    <h3>₹1000 - ₹2000</h3>
+                    <p>Tata Ace (3 Wheeler)</p>
+                    <p>500kg</p>
+                </div>
+            </div> 
+        </section>
+    </section>
+    </section>
+    <section class="footer">
+        <div class="box-container">
+            <div class="box">
+                <h3>Quick Links</h3>
+                <a href="#home"><i class="fas fa-arrow-right"></i>Home</a>
+                <a href="#vehicles"><i class="fas fa-arrow-right"></i>Vehicles</a>
+                <a href="#review"><i class="fas fa-arrow-right"></i>Reviews</a>
+                <a href="#contact"><i class="fas fa-arrow-right"></i>Contact</a>
+            </div>
+            <div class="box">
+                <h3>For Contact</h3>
+                <a href="#"><i class="fas fa-phone"></i>+91 99629 4569</a>
+                <a href="#"><i class="fas fa-envelope"></i>myporter@gmail.com</a>
+                <a href="#"><i class="fas fa-map-marker-alt"></i>Tidel Park, Thiruvanmiyur, Chennai, India</a>
+            </div>
+            <div class="box">
+                <h3>Social Media</h3>
+                <a href="#"><i class="fa-brands fa-square-facebook"></i>Facebook</a>
+                <a href="#"><i class="fa-brands fa-square-x-twitter"></i>X</a>
+                <a href="#"><i class="fa-brands fa-square-instagram"></i>Instagram</a>
+                <a href="#"><i class="fa-brands fa-linkedin"></i>Linkedin</a>
+
+            </div>
+        </div>
+        <h1 class="credit">Created by TEAM JAK</h1>
+    </section>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+<script src="/Porter/static/js/index.js"></script>
+<script>
+    document.querySelector('#addaddress').onclick = () => {
+  document.querySelector('.newaddress').classList.toggle('active');
+}
+
+document.querySelector('#close-otp').onclick = () => {
+  document.querySelector('.newaddress').classList.remove('active');
+}
+</script>
+</html>

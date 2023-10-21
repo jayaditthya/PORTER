@@ -11,7 +11,9 @@
     text-transform: capitalize;
     transition: all 0.3s ease;
 }
-
+::-webkit-scrollbar{
+    
+}
 :root{
     --orange: #FF6C00;
     --orange-light: #FF9D3A;
@@ -716,7 +718,12 @@ section{
     background: var(--orange-light);
     color: #fff;
 }
-
+.userinfo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 .credit{
     display: flex;
     text-align: center;
@@ -729,39 +736,51 @@ section{
 
 .search{
     margin-top: 10rem;
+    display: flex;
+    align-items: center;
+    padding-left: 5rem;
+    padding-right: 5rem;
+}
+.search .mapaddress{
+    padding: 2rem;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+    width: 500px;
+}
+.search .mapadd{
+    width: 500px;
+    height: 500px;
 
 }
 .search form{
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-    padding: 2rem; 
+    gap: 2rem;
     padding-top: 5rem;
     padding-bottom: 5rem;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
-    gap: 1.5rem;
     background: #fff;
+    flex-direction: row;
 }
 
 .search form i{
     font-size: 2rem;
     margin-right: 1rem;
 }
+.search form input{
+    flex: 2;
+}
 .search form #currentloc{
-    font-size: 1.5rem;
+    font-size: 2.5rem;
     color: var(--orange);
     cursor: pointer;
     left: 90%;
 }
-.search form .location{
+.location{
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 1.5rem;
     padding: 2rem;
-    width: 100%;
+    width: 500px;
     background: #fff;
     box-shadow: var(--box-shadow);
     border-radius: .5rem;
